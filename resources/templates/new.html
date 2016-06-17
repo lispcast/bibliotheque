@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="jumbotron">
+    <h1>Welcome to bibliotheque</h1>
+  </div>
+
+  <h2>Add a new book</h2>
+  {% for error in errors %}
+  <div class="alert alert-danger">{{error.1|join}}</div>
+  {% endfor %}
+
+  <form method="POST" action="/new">
+    {% csrf-field %}
+    <p>
+      Title:
+      <input class="form-control" type="text" name="title" value="{{title}}">
+    </p>
+    <p>
+      Author:
+      <input class="form-control" type="text" name="author" value="{{author}}">
+    </p>
+    <p>
+      URL:
+      <input class="form-control" type="text" name="URL" value="{{URL}}">
+    </p>
+    <p>
+      Image URL:
+      <input class="form-control" type="text" name="image_url" value="{{image_url}}">
+    </p>
+    <p>
+      Score:
+      <input type="radio" name="score" value="1">1
+      <input type="radio" name="score" value="2">2
+      <input type="radio" name="score" value="3">3
+      <input type="radio" name="score" value="4">4
+      <input type="radio" name="score" value="5">5
+      <input type="radio" name="score" value="6" checked>6
+      <input type="radio" name="score" value="7">7
+      <input type="radio" name="score" value="8">8
+      <input type="radio" name="score" value="9">9
+      <input type="radio" name="score" value="10">10
+    </p>
+    <p>
+      Short descripton:
+      <textarea class="form-control" name="short_description">
+        {{short_description}}
+      </textarea>
+    </p>
+    <p>
+      Long description:
+      <textarea class="form-control" name="long_description">
+        {{long_description}}
+      </textarea>
+    </p>
+    <input class="btn btn-primary" type="submit">
+  </form>
+{% endblock %}

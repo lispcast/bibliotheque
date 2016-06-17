@@ -1,0 +1,3 @@
+ALTER TABLE books
+ADD COLUMN author TEXT NOT NULL default '',
+ADD COLUMN URL TEXT
