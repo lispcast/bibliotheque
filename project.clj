@@ -4,10 +4,10 @@
   :url "http://example.com/FIXME"
 
   :dependencies [[luminus-log4j "0.1.3"]
-                 [org.clojure/clojure "1.8.0"]
+                 [org.clojure/clojure "1.10.0"]
                  [selmer "1.0.4"]
                  [markdown-clj "0.9.89"]
-                 [ring-middleware-format "0.7.0"]
+                 [ring-middleware-format "0.7.3"]
                  [metosin/ring-http-response "0.6.5"]
                  [bouncer "1.0.0"]
                  [org.webjars/bootstrap "4.0.0-alpha.2"]
@@ -22,7 +22,7 @@
                  [cprop "0.1.8"]
                  [org.clojure/tools.cli "0.3.5"]
                  [luminus-nrepl "0.1.4"]
-                 [luminus-migrations "0.2.2"]
+                 [luminus-migrations "0.6.3"]
                  [conman "0.5.8"]
                  [org.postgresql/postgresql "9.4-1206-jdbc4"]
                  [org.webjars/webjars-locator-jboss-vfs "0.1.0"]
@@ -35,10 +35,11 @@
   :resource-paths ["resources"]
   :target-path "target/%s/"
   :main bibliotheque.core
-  :migratus {:store :database :db ~(get (System/getenv) "DATABASE_URL")}
+  :migratus {:store :database :db ~(get (System/getenv) "DATABASE_URL")
+             :migration-dir "migrations"}
 
   :plugins [[lein-cprop "1.0.1"]
-            [migratus-lein "0.3.7"]
+            [migratus-lein "0.7.0"]
             [lein-immutant "2.1.0"]]
 
   :profiles
